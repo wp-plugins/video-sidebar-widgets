@@ -9,7 +9,7 @@ Stable tag:1.0
 
 == Description ==
 
-A Video Widget written in latest Widgets API. It enables the user to embed FlashVideo from various video sharing networks into the widgetised sidebar of a WordPress powered blog. Currently supporting video embed from 14 video sharing networks. Including, Youtube, Vimeo, Veoh, Blip.tv etc..
+A Video Widget written in latest Widgets API. It enables the user to embed FlashVideo from various video sharing networks into the widgetised sidebar of a WordPress powered blog. Currently supporting video embed from 13 video sharing networks. Including, Youtube, Vimeo, Veoh, Blip.tv etc..
 
 
 == Changelog ==
