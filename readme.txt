@@ -15,7 +15,8 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 == Changelog ==
 
 =2.0=
-Included Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
+
+*Included Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
 
 == Installation ==
 
