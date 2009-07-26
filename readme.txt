@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn
 Requires at least:2.8.1
 Tested up to: 2.8.2
-Stable tag:2.0
+Stable tag:2.1
 
 == Description ==
 
@@ -17,6 +17,21 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 =2.0=
 
 *Included Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
+
+
+=2.1=
+
+*re-arranged Random Video Sidebar Widget Layout
+
+*Included fixed size, no autoplay, video preview in widget form for easier identification of videos. Video will display after setting up and clicking save button. Video may not display due to slow connection, browser caching, wrong setting, or video removed from source.
+
+*Included support for google videos
+
+*Included Video Caption at bottom of Video
+
+*Video Caption has a style class of "VideoCaption" to enable user to indicate font-height etc.
+
+
 
 == Installation ==
 
