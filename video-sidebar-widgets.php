@@ -787,7 +787,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source2'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source2'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source2'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
-<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
+<option value='Tangle' <?php  if($instance['RV_source2'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -832,7 +832,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source3'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source3'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source3'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
-<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
+<option value='Tangle' <?php  if($instance['RV_source3'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -878,7 +878,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source4'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source4'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source4'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
-<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
+<option value='Tangle' <?php  if($instance['RV_source4'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -923,7 +923,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source5'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source5'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source5'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
-<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
+<option value='Tangle' <?php  if($instance['RV_source5'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
