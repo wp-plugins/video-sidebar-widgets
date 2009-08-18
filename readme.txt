@@ -2,14 +2,14 @@
 Contributors: denzel chia
 Donate link: http://denzeldesigns.com/wordpress-plugins/video-sidebar-widgets/
 Author link: http://denzeldesigns.com
-Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn
+Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
-Tested up to: 2.8.3
+Tested up to: 2.8.4
 Stable tag:2.1
 
 == Description ==
 
-A Video Widget written in latest Widgets API. It enables the user to embed FlashVideo from various video sharing networks into the widgetised sidebar of a WordPress powered blog. Currently supporting video embed from 14 video sharing networks. Including, Youtube, Vimeo, Veoh, Blip.tv etc..
+A Video Widget written in latest Widgets API. It enables the user to embed FlashVideo from various video sharing networks into the widgetised sidebar of a WordPress powered blog. Currently supporting video embed from 15 video sharing networks. Including, Youtube, Vimeo, Veoh, Blip.tv etc..
 Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
 
 == Changelog ==
@@ -31,6 +31,9 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 
 *Video Caption has a style class of "VideoCaption" to enable user to indicate font-height etc.
 
+=2.2=
+
+*Included support for Tangle.com videos
 
 
 == Installation ==

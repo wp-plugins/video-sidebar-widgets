@@ -2,7 +2,7 @@
 /*
 Plugin Name: Video Sidebar Widgets
 Plugin URI: http://denzeldesigns.com/wordpress-plugins/video-sidebar-widgets/
-Version: 2.1
+Version: 2.2
 Description: A video sidebar widget using WordPress 2.8 Widgets API to display videos such as Vimeo, YouTube, MySpace Videos etc. Requires at least WordPress 2.8.1. Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
 Author: Denzel Chia
 Author URI: http://denzeldesigns.com/
@@ -137,6 +137,7 @@ class VideoSidebarWidget extends WP_Widget {
 				<option value='Youku' <?php  if($instance['v_source'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 				<option value='cn6' <?php  if($instance['v_source'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 				<option value='Google' <?php  if($instance['v_source'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
+                <option value='Tangle' <?php  if($instance['v_source'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 				</select>
 				</p>
 				
@@ -323,6 +324,17 @@ function ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheig
 		if($v_autoplay2=='1'){
 		$flashvar = null;
 		$flashvar2 = 'FlashVars="autoPlay=true&playerMode=embedded"';
+		}
+		break;
+		
+		case Tangle:
+		$value = "http://www.tangle.com/flash/swf/flvplayer.swf";
+		if($v_autoplay2=='1'){
+		$flashvar = null;
+		$flashvar2 = "FlashVars=\"viewkey=$v_id2&autoplay=$v_autoplay2\"";
+		}else{
+		$flashvar = null;
+		$flashvar2 = "FlashVars=\"viewkey=$v_id2\"";
 		}
 		break;
 	
@@ -580,6 +592,20 @@ extract( $args );
 		}
 		$rv_cap = $Embed_cap;
 		break;
+		
+		case Tangle:
+		$rv_value = "http://www.tangle.com/flash/swf/flvplayer.swf";
+		if($RV_autoplay=='1'){
+		$rv_flashvar = null;
+		$rv_flashvar2 = "FlashVars=\"viewkey=$Embed_id&autoplay=$RV_autoplay\"";
+		}else{
+		$rv_flashvar = null;
+		$rv_flashvar2 = "FlashVars=\"viewkey=$Embed_id\"";
+		}
+		$rv_cap = $Embed_cap;
+		break;
+		
+		
 	
 		}
 		
@@ -716,6 +742,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source1'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source1'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source1'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
+<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -760,6 +787,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source2'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source2'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source2'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
+<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -804,6 +832,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source3'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source3'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source3'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
+<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -849,6 +878,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source4'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source4'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source4'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
+<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
@@ -893,6 +923,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <option value='Youku' <?php  if($instance['RV_source5'] == 'Youku'){echo 'selected="selected"';}?> >Youku Video</option>
 <option value='cn6' <?php  if($instance['RV_source5'] == 'cn6'){echo 'selected="selected"';}?> >6.cn Video</option>
 <option value='Google' <?php  if($instance['RV_source5'] == 'Google'){echo 'selected="selected"';}?> >Google Video</option>
+<option value='Tangle' <?php  if($instance['RV_source1'] == 'Tangle'){echo 'selected="selected"';}?> >Tangle Video</option>
 </select>
 </p>
 
