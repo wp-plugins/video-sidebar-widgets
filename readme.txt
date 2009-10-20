@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
 Tested up to: 2.8.4
-Stable tag:2.2
+Stable tag:2.3
 
 == Description ==
 
@@ -34,6 +34,11 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 =2.2=
 
 *Included support for Tangle.com videos
+
+=2.3=
+
+*Removed auto play video option for Blip.tv video, which is causing the video not to load in Internet Explorer.
+*Allowed HTML links in video caption
 
 
 == Installation ==

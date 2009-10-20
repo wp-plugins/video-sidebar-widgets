@@ -2,7 +2,7 @@
 /*
 Plugin Name: Video Sidebar Widgets
 Plugin URI: http://denzeldesigns.com/wordpress-plugins/video-sidebar-widgets/
-Version: 2.2
+Version: 2.3
 Description: A video sidebar widget using WordPress 2.8 Widgets API to display videos such as Vimeo, YouTube, MySpace Videos etc. Requires at least WordPress 2.8.1. Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
 Author: Denzel Chia
 Author URI: http://denzeldesigns.com/
@@ -79,7 +79,7 @@ class VideoSidebarWidget extends WP_Widget {
 				$instance['v_autoplay2'] = strip_tags( $new_instance['v_autoplay2'] );
 				$instance['v_id2'] = strip_tags( $new_instance['v_id2'] );
 				$instance['v_source'] = strip_tags( $new_instance['v_source'] );
-				$instance['v_cap2'] = strip_tags( $new_instance['v_cap2'] );
+				$instance['v_cap2'] = $new_instance['v_cap2'];
 				return $instance;
 		
 		}//end of function update
@@ -97,7 +97,7 @@ class VideoSidebarWidget extends WP_Widget {
 				$instance['v_autoplay2'] = strip_tags( $instance['v_autoplay2'] );
 				$instance['v_id2'] = strip_tags( $instance['v_id2'] );
 				$instance['v_source'] = strip_tags( $instance['v_source'] );
-				$instance['v_cap2'] = strip_tags( $instance['v_cap2'] );	
+				$instance['v_cap2'] = $instance['v_cap2'];	
 				
 				//function to show video in widget admin form fixed width and height, please look for it below
 				$autoplaysetting = '0';
@@ -186,6 +186,10 @@ class VideoSidebarWidget extends WP_Widget {
 						echo $msg;
 						break;
 						
+						case Blip:
+						echo "<p>Sorry, auto play option removed as it is causing error in Internet Explorer</p>";
+						break;
+						
 						case cn6:
 						echo "<p>Sorry, auto play option not supported by 6.cn</p>";
 						break;
@@ -257,10 +261,7 @@ function ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheig
         break;
 		
 	    case Blip:
-		if($v_autoplay2=='1'){
-		$autoplay2 = "true";
-		}else{$autoplay2 = "false";}
-		$value =  "http://blip.tv/play/$v_id2?autostart=$autoplay2";
+		$value =  "http://blip.tv/play/$v_id2";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
@@ -513,10 +514,7 @@ extract( $args );
         break;
 		
 	    case Blip:
-		if($RV_autoplay=='1'){
-		$R_autoplay2 = "true";
-		}else{$R_autoplay2 = "false";}
-		$rv_value =  "http://blip.tv/play/$Embed_id?autostart=$R_autoplay2";
+		$rv_value =  "http://blip.tv/play/$Embed_id";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
@@ -638,19 +636,19 @@ function update( $new_instance, $old_instance ) {
         $instance['RV_autoplay'] = strip_tags( $new_instance['RV_autoplay'] );
         $instance['RV_id1'] = strip_tags( $new_instance['RV_id1'] );
 		$instance['RV_source1'] = strip_tags( $new_instance['RV_source1'] );
-		$instance['RV_cap1'] = strip_tags( $new_instance['RV_cap1'] );
+		$instance['RV_cap1'] = $new_instance['RV_cap1'];
 		$instance['RV_id2'] = strip_tags( $new_instance['RV_id2'] );
 		$instance['RV_source2'] = strip_tags( $new_instance['RV_source2'] );
-		$instance['RV_cap2'] = strip_tags( $new_instance['RV_cap2'] );
+		$instance['RV_cap2'] = $new_instance['RV_cap2'];
 		$instance['RV_id3'] = strip_tags( $new_instance['RV_id3'] );
 		$instance['RV_source3'] = strip_tags( $new_instance['RV_source3'] );
-		$instance['RV_cap3'] = strip_tags( $new_instance['RV_cap3'] );
+		$instance['RV_cap3'] = $new_instance['RV_cap3'];
 		$instance['RV_id4'] = strip_tags( $new_instance['RV_id4'] );
 		$instance['RV_source4'] = strip_tags( $new_instance['RV_source4'] );
-		$instance['RV_cap4'] = strip_tags( $new_instance['RV_cap4'] );
+		$instance['RV_cap4'] = $new_instance['RV_cap4'];
 		$instance['RV_id5'] = strip_tags( $new_instance['RV_id5'] );
 		$instance['RV_source5'] = strip_tags( $new_instance['RV_source5'] );
-		$instance['RV_cap5'] = strip_tags( $new_instance['RV_cap5'] );			
+		$instance['RV_cap5'] = $new_instance['RV_cap5'];			
         return $instance;
 }
 
@@ -664,19 +662,19 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
         $instance['RV_autoplay'] = strip_tags( $instance['RV_autoplay'] );
         $instance['RV_id1'] = strip_tags( $instance['RV_id1'] );
 		$instance['RV_source1'] = strip_tags( $instance['RV_source1'] );
-		$instance['RV_cap1'] = strip_tags( $instance['RV_cap1'] );
+		$instance['RV_cap1'] = $instance['RV_cap1'];
 		$instance['RV_id2'] = strip_tags( $instance['RV_id2'] );
 		$instance['RV_source2'] = strip_tags( $instance['RV_source2'] );
-		$instance['RV_cap2'] = strip_tags( $instance['RV_cap2'] );
+		$instance['RV_cap2'] = $instance['RV_cap2'];
 		$instance['RV_id3'] = strip_tags( $instance['RV_id3'] );
 		$instance['RV_source3'] = strip_tags( $instance['RV_source3'] );
-		$instance['RV_cap3'] = strip_tags( $instance['RV_cap3'] );
+		$instance['RV_cap3'] = $instance['RV_cap3'];
 		$instance['RV_id4'] = strip_tags( $instance['RV_id4'] );
 		$instance['RV_source4'] = strip_tags( $instance['RV_source4'] );
-		$instance['RV_cap4'] = strip_tags( $instance['RV_cap4'] );
+		$instance['RV_cap4'] = $instance['RV_cap4'];
 		$instance['RV_id5'] = strip_tags( $instance['RV_id5'] );
 		$instance['RV_source5'] = strip_tags( $instance['RV_source5'] );
-		$instance['RV_cap5'] = strip_tags( $instance['RV_cap5'] );			
+		$instance['RV_cap5'] = $instance['RV_cap5'];			
 
 
 ?>
