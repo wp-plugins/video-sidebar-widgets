@@ -2,8 +2,8 @@
 /*
 Plugin Name: Video Sidebar Widgets
 Plugin URI: http://denzeldesigns.com/wordpress-plugins/video-sidebar-widgets/
-Version: 2.3
-Description: A video sidebar widget using WordPress 2.8 Widgets API to display videos such as Vimeo, YouTube, MySpace Videos etc. Requires at least WordPress 2.8.1. Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
+Version: 3.0
+Description: Video Sidebar Widgets to display videos such as Vimeo, YouTube, MySpace Videos etc. Now with added shortcode and quicktag to embed video in post and page content.
 Author: Denzel Chia
 Author URI: http://denzeldesigns.com/
 */ 
@@ -49,7 +49,7 @@ class VideoSidebarWidget extends WP_Widget {
 				echo $before_title . $title2 . $after_title;
 				}
 			
-				//get settings from Widget Admin Form to assign to function ShowVideo
+				//get settings from Widget Admin Form to assign to function VSWShowVideo
 				$autoplaysetting = $instance['v_autoplay2'];
 				$videoid = $instance['v_id2'];
 				$videosource = $instance['v_source']; 
@@ -57,7 +57,7 @@ class VideoSidebarWidget extends WP_Widget {
 				$videoheight = $instance['v_height2'];
 				
 				//function to show video in blog sidebar, please look for it below
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'false');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'false','false');
 				
 				if($cap2){
 				echo "<p class=\"VideoCaption\">$cap2</p>";
@@ -107,7 +107,7 @@ class VideoSidebarWidget extends WP_Widget {
 				$videoheight = null;
 				//$admin = true // to show video in admin
 				
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
 						
 				?>
 				
@@ -213,7 +213,7 @@ class VideoSidebarWidget extends WP_Widget {
 
 
 
-function ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,$admin){
+function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,$admin,$shortcode){
 
 //admin = true to show in widget admin
 //admin = false to show in blog sidebar
@@ -341,7 +341,24 @@ function ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheig
 	
 		}
 		
-		if($admin=="true"){
+		if($shortcode=="true"){
+		//added in version 2.3
+		//return instead of echo video on blog using shortcode
+		$vsw_code = "\n<object width=\"$v_width2\" height=\"$v_height2\">\n";
+		$vsw_code .= $flashvar;
+		$vsw_code .= "<param name=\"allowfullscreen\" value=\"true\" />\n";
+		$vsw_code .= "<param name=\"allowscriptaccess\" value=\"always\" />\n";
+		$vsw_code .= "<param name=\"movie\" value=\"$value\" />\n";
+		$vsw_code .= "<param name=\"wmode\" value=\"transparent\">\n";
+		$vsw_code .= "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
+		$vsw_code .= "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
+		$vsw_code .= $flashvar2;
+		$vsw_code .= "width=\"$v_width2\" height=\"$v_height2\">\n";
+		$vsw_code .= "</embed>\n";
+		$vsw_code .= "</object>\n\n";
+		return $vsw_code;
+		}
+		elseif($admin=="true"){
 		// echo video in admin
         echo "\n<object width=\"212\" height=\"172\">\n";
 		echo $flashvar;
@@ -374,7 +391,7 @@ function ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheig
 		}
 
 
-}//end of function ShowVideo
+}//end of function VSWShowVideo
 
 
 
@@ -721,7 +738,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$videoheight = null;
 				//$admin = true // to show video in admin
 				
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
 ?>
 <p>
 <label for="<?php echo $this->get_field_id( 'RV_source1' ); ?>">Select Video 1 Source:</label> 
@@ -766,7 +783,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$videoheight = null;
 				//$admin = true // to show video in admin
 				
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
 ?>
 <p>
 <label for="<?php echo $this->get_field_id( 'RV_source2' ); ?>">Select Video 2 Source:</label> 
@@ -811,7 +828,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$videoheight = null;
 				//$admin = true // to show video in admin
 				
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
 ?>
 <p>
 <label for="<?php echo $this->get_field_id( 'RV_source3' ); ?>">Select Video 3 Source:</label> 
@@ -857,7 +874,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$videoheight = null;
 				//$admin = true // to show video in admin
 				
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
 ?>
 <p>
 <label for="<?php echo $this->get_field_id( 'RV_source4' ); ?>">Select Video 4 Source:</label> 
@@ -902,7 +919,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$videoheight = null;
 				//$admin = true // to show video in admin
 				
-				ShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true');
+				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
 ?>
 <p>
 <label for="<?php echo $this->get_field_id( 'RV_source5' ); ?>">Select Video 5 Source:</label> 
@@ -942,9 +959,173 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
     }
 
 }
+//sdded in version 2.3
+//create shortcode to use WP_WIDGET class to echo out video 
+//[vsw id="123456" source="vimeo" width="400" height="300" autoplay="no"]
+function vsw_show_video($atts, $content = null) {
+	extract(shortcode_atts(array(
+	    "id" => ' ',
+		"source" => ' ',
+		"width" => ' ',
+		"height" => ' ',
+		"autoplay" => ' ',
+	), $atts));
+	
+return vsw_show_video_class($id,$source,$width,$height,$autoplay);
+}
 
+add_shortcode("vsw", "vsw_show_video");
 
+//function to be used in shortcode or directly in theme
+//uses the_widget WordPress Function found in widgets.php
+function vsw_show_video_class($id,$source,$width,$height,$autoplay){
 
+        $vsw_id = $id;
+		$vsw_width = $width;
+		$vsw_height = $height;
+        
+		//convert string of source to lowercase
+        $source = strtolower($source);
+
+        //should have used all lowercase in previous functions
+		//now have to switch it.
+		switch ($source) {
+		
+		case null:
+		$vsw_source = null;
+		break;
+		
+		case youtube:
+		$vsw_source = YouTube;
+		break;
+		
+		case vimeo:
+		$vsw_source = Vimeo;
+        break;
+		
+		case myspace:
+		$vsw_source = MySpace;
+        break;
+		
+		case veoh:
+		$vsw_source = Veoh;
+        break;
+		
+	    case bliptv:
+		$vsw_source = Blip;
+        break;
+		
+	    case wordpress:
+		$vsw_source = WordPress;
+        break;
+		
+		case viddler:
+		$vsw_source = Viddler;
+        break;
+		
+		case dailymotion:
+		$vsw_source = DailyMotion;
+        break;
+				
+		
+		case revver:
+		$vsw_source = Revver;
+		break;
+		
+		case metacafe:
+		$vsw_source = Metacafe;
+		break;
+		
+		case tudou:
+		$vsw_source = Tudou;
+		break;
+		
+		case youku:
+		$vsw_source = Youku;
+		break;
+		
+		case cn6:
+		$vsw_source = cn6;
+		break;
+		
+		case google:
+		$vsw_source = Google;
+		break;
+		
+		case tangle:
+		$vsw_source = Tangle;
+		break; 
+		
+		}
+		
+		//string to lowercase
+		$autoplay = strtolower($autoplay);
+		
+		//switch autoplay yes or no to 1 or 0
+		switch ($autoplay) {
+		
+		case null:
+		$vsw_autoplay = 0;
+		break;
+		
+		case no:
+		$vsw_autoplay = 0;
+		break;
+		
+		case yes:
+		$vsw_autoplay = 1;
+		break;
+		
+		}
+			
+	
+$vsw_code = VSWShowVideo($vsw_source,$vsw_id,$vsw_autoplay,$vsw_width,$vsw_height,'false','true');
+
+return $vsw_code;
+
+}
+
+//add tinymce button to editor
+function dd_vsw_addbuttons() {
+   // Don't bother doing this stuff if the current user lacks permissions
+   if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') )
+     return;
+ 
+   // Add only in Rich Editor mode
+   if ( get_user_option('rich_editing') == 'true') {
+     add_filter("mce_external_plugins", "dd_vsw_tinymce_plugin");
+     add_filter('mce_buttons', 'dd_vsw_button');
+   }
+}
+ 
+function dd_vsw_button($tiny_buttons) {
+   array_push($tiny_buttons, "vsw");
+   return $tiny_buttons;
+}
+
+// determine absolute url path of editor_plugin.js
+function dd_vsw_plugin_url($type) {
+    //check if defined WordPress Plugins URL
+	if (defined('WP_PLUGINS_URL'))  {
+		
+		return WP_PLUGINS_URL."/". $type ."/editor_plugin.js";
+	
+	}else{
+    //if not assumme it is default location.
+	return "../../../wp-content/plugins/". $type ."/editor_plugin.js";
+	
+	}
+}
+
+// Load the TinyMCE plugin : editor_plugin.js (wp2.5)
+function dd_vsw_tinymce_plugin($plugin_array) {
+   $path = dd_vsw_plugin_url("video-sidebar-widgets");
+   $plugin_array['vsw'] = $path;
+   return $plugin_array;
+}
+ 
+// init process for button control
+add_action('init', 'dd_vsw_addbuttons');
 
 
 

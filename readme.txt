@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
 Tested up to: 2.8.5
-Stable tag:2.3
+Stable tag:3.0
 
 == Description ==
 
@@ -40,6 +40,11 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 *Removed auto play video option for Blip.tv video, which is causing the video not to load in Internet Explorer.
 *Allowed HTML links in video caption
 
+=3.0=
+
+*added video quicktag at post editor to insert video shortcode into post or page.
+*Shortcode to allow posting of video on post or page, using video function already available in plugin.
+
 
 == Installation ==
 
@@ -51,6 +56,10 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 
 4. Go to Widgets under Appearance in the WordPress Admin, and you will find the Video Sidebar Widget.
 
+== Can I post video in post or page content other than the sidebar? ==
+
+As of version 3.0, shortcode is added to enable user to post video in content.
+User can use the video Quicktag at Tinymce editor to insert video shortcode.
 
 == How to use Video Sidebar Widget ? ==
 
