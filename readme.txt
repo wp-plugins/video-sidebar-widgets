@@ -4,7 +4,7 @@ Donate link: http://denzeldesigns.com/wordpress-plugins/video-sidebar-widgets/
 Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
-Tested up to: 2.9
+Tested up to: 2.9.2
 Stable tag:3.0
 
 == Description ==
