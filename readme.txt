@@ -14,12 +14,12 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 
 == Changelog ==
 
-=2.0=
+= 2.0 =
 
 *Included Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
 
 
-=2.1=
+= 2.1 =
 
 *re-arranged Random Video Sidebar Widget Layout
 
@@ -31,16 +31,16 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 
 *Video Caption has a style class of "VideoCaption" to enable user to indicate font-height etc.
 
-=2.2=
+= 2.2 =
 
 *Included support for Tangle.com videos
 
-=2.3=
+= 2.3 =
 
 *Removed auto play video option for Blip.tv video, which is causing the video not to load in Internet Explorer.
 *Allowed HTML links in video caption
 
-=3.0=
+= 3.0 =
 
 *added video quicktag at post editor to insert video shortcode into post or page.
 *Shortcode to allow posting of video on post or page, using video function already available in plugin.
@@ -48,13 +48,21 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
 
 == Installation ==
 
-1. Install through the Add New option under Plugins in your WordPress Admin by searching for Video Sidebar Widgets.
+= Install Plugin Using Search =
 
-2. Alternatively, download a zip copy from the download option from our sidebar and Upload through the Add New->Upload option under Plugins in your WordPress Admin.
+   1. Search for Video Sidebar widgets in Add New Plugins
+   2. Click 'Install Now' in search results row
+   3. Click 'OK' to accept plugin installation
+   4. Once installed, click Activate Plugin link
+   5. Configure the plugin through Settings
 
-3. Activate the plugin through the Plugins menu in WordPress Admin.
+= or, install Plugin in .ZIP Format =
 
-4. Go to Widgets under Appearance in the WordPress Admin, and you will find the Video Sidebar Widget.
+   1. Visit Plugins > Add New > Upload in WordPress admin
+   2. Upload icopyright.zip file
+   3. Once uploaded, click Activate Plugin link
+   4. Configure the plugin through Settings 
+
 
 == Can I post video in post or page content other than the sidebar? ==
 
