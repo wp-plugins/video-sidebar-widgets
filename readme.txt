@@ -54,14 +54,13 @@ Now including Random Video Sidebar Widget to randomly display 1 out of 5 preset 
    2. Click 'Install Now' in search results row
    3. Click 'OK' to accept plugin installation
    4. Once installed, click Activate Plugin link
-   5. Configure the plugin through Settings
 
 = or, install Plugin in .ZIP Format =
 
    1. Visit Plugins > Add New > Upload in WordPress admin
    2. Upload video-sidebar-widget.zip file
    3. Once uploaded, click Activate Plugin link
-   4. Configure the plugin through Settings 
+ 
 
 
 == Can I post video in post or page content other than the sidebar? ==
