@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
 Tested up to: 3.1.1
-Stable tag:4.0
+Stable tag:4.1
 
 == Description ==
 
@@ -14,10 +14,29 @@ Stable tag:4.0
 
 == Changelog ==
 
-= 2.0 =
+= 4.1 =
 
-*Included Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
+*Fixed WordPress Video in random video widget (Sorry forgotten about this!)
 
+= 4.0 =
+
+* Fixed WordPress Video
+* Dropped Tangle Video (GodTube)
+* added admin settings page for disabling widgets
+
+= 3.0 =
+
+*added video quicktag at post editor to insert video shortcode into post or page.
+*Shortcode to allow posting of video on post or page, using video function already available in plugin.
+
+= 2.3 =
+
+*Removed auto play video option for Blip.tv video, which is causing the video not to load in Internet Explorer.
+*Allowed HTML links in video caption
+
+= 2.2 =
+
+*Included support for Tangle.com videos
 
 = 2.1 =
 
@@ -31,25 +50,10 @@ Stable tag:4.0
 
 *Video Caption has a style class of "VideoCaption" to enable user to indicate font-height etc.
 
-= 2.2 =
+= 2.0 =
 
-*Included support for Tangle.com videos
+*Included Random Video Sidebar Widget to randomly display 1 out of 5 preset video.
 
-= 2.3 =
-
-*Removed auto play video option for Blip.tv video, which is causing the video not to load in Internet Explorer.
-*Allowed HTML links in video caption
-
-= 3.0 =
-
-*added video quicktag at post editor to insert video shortcode into post or page.
-*Shortcode to allow posting of video on post or page, using video function already available in plugin.
-
-= 4.0 =
-
-* Fixed WordPress Video
-* Dropped Tangle Video (GodTube)
-* added admin settings page for disabling widgets
 
 == Installation ==
 

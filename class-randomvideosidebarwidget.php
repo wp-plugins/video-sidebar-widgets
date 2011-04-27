@@ -135,12 +135,12 @@ extract( $args );
 		$rv_cap = $Embed_cap;
         break;
 		
-	    case WordPress:
-		$rv_value =  "http://v.wordpress.com/$Embed_id";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+        case WordPress:
+		$rv_value =  "http://s0.videopress.com/player.swf?v=1.02";
+		$rv_flashvar = "<param name='flashvars' value='$Embed_id'>";
+		$rv_flashvar2 = 'flashvars="guid='.$Embed_id.'"';
 		$rv_cap = $Embed_cap;
-        break;
+		break;
 		
 		case Viddler:
 		$rv_value =  "http://www.viddler.com/player/$Embed_id";
