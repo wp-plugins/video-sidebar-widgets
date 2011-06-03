@@ -56,6 +56,18 @@ function vsw_admin_page(){
 		?>
 		</div>
 		
+		
+		<div style="float:left;padding:5px;margin:10px 10px 10px 0px;text-align:center">
+		<img style='border:1px solid #eee;padding:5px;' src="<?php echo WP_PLUGIN_URL.'/video-sidebar-widgets/source_image/pmvw.png'?>"/>
+		<br/>
+		<label>Post Meta Video Widget</label>
+        <?php
+	       if($options['hide_pmvw']) { $checked4 = ' checked="checked" '; }
+	      echo "<input ".$checked4." id='tmb' name='vsw_plugin_options[hide_pmvw]' type='checkbox' value='hide'/>";		
+		?>
+		</div>
+		
+		
 		<br/>
 		
 		<div style="float:left;padding:5px;margin:10px 10px 10px 0px;clear:both">
