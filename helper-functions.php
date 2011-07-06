@@ -15,6 +15,9 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		$v_source = $videosource;		
         $v_width2 = $videowidth;
         $v_height2 = $videoheight;
+        //declare empty variable to prevent WordPress debug error
+        $flashvar = null;
+        $flashvar2 = null;
   
       	$source = $v_source;
         
@@ -27,44 +30,44 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		$flashvar2 = null;
 		break;		
 		
-        case YouTube:
+        case 'YouTube':
         $value = "http://www.youtube.com/v/$v_id2&autoplay=$v_autoplay2&loop=0&rel=0";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
 		
-		case Vimeo:
+		case 'Vimeo':
 		$value =  "http://vimeo.com/moogaloop.swf?clip_id=$v_id2&amp;server=vimeo.com&amp;loop=0&amp;fullscreen=1&amp;autoplay=$v_autoplay2";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
 		
-		case MySpace:
+		case 'MySpace':
 		$value =  "http://mediaservices.myspace.com/services/media/embed.aspx/m=$v_id2,t=1,mt=video,ap=$v_autoplay2";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
 		
-		case Veoh:
+		case 'Veoh':
 		$value = "http://www.veoh.com/static/swf/webplayer/WebPlayer.swf?version=AFrontend.5.4.2.20.1002&";
 		$value.= "permalinkId=$v_id2&player=videodetailsembedded&id=anonymous&videoAutoPlay=$v_autoplay2";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
 		
-	    case Blip:
+	    case 'Blip':
 		$value =  "http://blip.tv/play/$v_id2";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
 		
-	    case WordPress:
+	    case 'WordPress':
 		$value =  "http://s0.videopress.com/player.swf?v=1.02";
 		$flashvar = "<param name='flashvars' value='$v_id2'>";
 		$flashvar2 = 'flashvars="guid='.$v_id2.'"';
         break;
 		
-		case Viddler:
+		case 'Viddler':
 		$value =  "http://www.viddler.com/player/$v_id2";
 		if($v_autoplay2=='1'){
 		$flashvar = "<param name=\"flashvars\" value=\"autoplay=t\" />\n";
@@ -72,20 +75,20 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		}
         break;
 		
-		case DailyMotion:
+		case 'DailyMotion':
 		$value =  "http://www.dailymotion.com/swf/$v_id2&autoStart=$v_autoplay2&related=0";
 		$flashvar = null;
 		$flashvar2 = null;
         break;
 				
 		
-		case Revver:
+		case 'Revver':
 		$value = "http://flash.revver.com/player/1.0/player.swf?mediaId=$v_id2&autoStart=$v_autoplay2";
 		$flashvar = null;
 		$flashvar2 = null;
 		break;
 		
-		case Metacafe:
+		case 'Metacafe':
 		$id = split('/',$v_id2);
 		$value = "http://www.metacafe.com/fplayer/$id[0]/$id[1].swf";
 		if($v_autoplay2=='1'){
@@ -94,25 +97,25 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		}
 		break;
 		
-		case Tudou:
+		case 'Tudou':
 		$value = "$v_id2";
 		$flashvar = null;
 		$flashvar2 = null;
 		break;
 		
-		case Youku:
+		case 'Youku':
 		$value = "$v_id2";
 		$flashvar = null;
 		$flashvar2 = null;
 		break;
 		
-		case cn6:
+		case 'cn6':
 		$value = "$v_id2";
 		$flashvar = null;
 		$flashvar2 = null;
 		break;
 		
-		case Google:
+		case 'Google':
 		$value = "http://video.google.com/googleplayer.swf?docid=$v_id2&hl=en&fs=true";
 		if($v_autoplay2=='1'){
 		$flashvar = null;
@@ -120,7 +123,7 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		}
 		break;
 		
-		case Tangle:
+		case 'Tangle':
 		$value = "http://www.tangle.com/flash/swf/flvplayer.swf";
 		if($v_autoplay2=='1'){
 		$flashvar = null;
@@ -206,83 +209,83 @@ return vsw_show_video_class($id,$source,$width,$height,$autoplay);
 add_shortcode("vsw", "vsw_show_video");
 
 //function to be used in shortcode or directly in theme
-//uses the_widget WordPress Function found in widgets.php
 function vsw_show_video_class($id,$source,$width,$height,$autoplay){
 
         $vsw_id = $id;
 		$vsw_width = $width;
 		$vsw_height = $height;
-        
+		
+
 		//convert string of source to lowercase
         $source = strtolower($source);
 
         //should have used all lowercase in previous functions
 		//now have to switch it.
 		switch ($source) {
-		
+				
 		case null:
 		$vsw_source = null;
 		break;
 		
-		case youtube:
-		$vsw_source = YouTube;
+		case 'youtube':
+		$vsw_source = 'YouTube';
 		break;
 		
-		case vimeo:
-		$vsw_source = Vimeo;
+		case 'vimeo':
+		$vsw_source = 'Vimeo';
         break;
 		
-		case myspace:
-		$vsw_source = MySpace;
+		case 'myspace':
+		$vsw_source = 'MySpace';
         break;
 		
-		case veoh:
-		$vsw_source = Veoh;
+		case 'veoh':
+		$vsw_source = 'Veoh';
         break;
 		
-	    case bliptv:
-		$vsw_source = Blip;
+	    case 'bliptv':
+		$vsw_source = 'Blip';
         break;
 		
-	    case wordpress:
-		$vsw_source = WordPress;
+	    case 'wordpress':
+		$vsw_source = 'WordPress';
         break;
 		
-		case viddler:
-		$vsw_source = Viddler;
+		case 'viddler':
+		$vsw_source = 'Viddler';
         break;
 		
-		case dailymotion:
-		$vsw_source = DailyMotion;
+		case 'dailymotion':
+		$vsw_source = 'DailyMotion';
         break;
 				
 		
-		case revver:
-		$vsw_source = Revver;
+		case 'revver':
+		$vsw_source = 'Revver';
 		break;
 		
-		case metacafe:
-		$vsw_source = Metacafe;
+		case 'metacafe':
+		$vsw_source = 'Metacafe';
 		break;
 		
-		case tudou:
-		$vsw_source = Tudou;
+		case 'tudou':
+		$vsw_source = 'Tudou';
 		break;
 		
-		case youku:
-		$vsw_source = Youku;
+		case 'youku':
+		$vsw_source = 'Youku';
 		break;
 		
-		case cn6:
-		$vsw_source = cn6;
+		case 'cn6':
+		$vsw_source = 'cn6';
 		break;
 		
-		case google:
-		$vsw_source = Google;
+		case 'google':
+		$vsw_source = 'Google';
 		break;
 		
-		case tangle:
-		$vsw_source = Tangle;
+		case 'tangle':
+		$vsw_source = 'Tangle';
 		break; 
 		
 		}
@@ -297,11 +300,11 @@ function vsw_show_video_class($id,$source,$width,$height,$autoplay){
 		$vsw_autoplay = 0;
 		break;
 		
-		case no:
+		case 'no':
 		$vsw_autoplay = 0;
 		break;
 		
-		case yes:
+		case 'yes':
 		$vsw_autoplay = 1;
 		break;
 		

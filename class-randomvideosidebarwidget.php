@@ -35,7 +35,11 @@ extract( $args );
 		$RV_id5 = $instance['RV_id5'];
 		$RV_source5 = $instance['RV_source5'];
 		$RV_cap5 = $instance['RV_cap5'];
-					
+		
+		//define empty variable to prevent WordPress debug error
+		$rv_flashvar = null;
+		$rv_flashvar2 = null;
+							
         echo $before_widget;
 
         if ( $RV_title )
@@ -99,28 +103,28 @@ extract( $args );
 		$rv_cap = null;
 		break;		
 		
-        case YouTube:
+        case 'YouTube':
 		$rv_value = "http://www.youtube.com/v/$Embed_id&autoplay=$RV_autoplay&loop=0&rel=0";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
         break;
 		
-		case Vimeo:
+		case 'Vimeo':
 		$rv_value =  "http://vimeo.com/moogaloop.swf?clip_id=$Embed_id&amp;server=vimeo.com&amp;loop=0&amp;fullscreen=1&amp;autoplay=$RV_autoplay";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
         break;
 		
-		case MySpace:
+		case 'MySpace':
 		$rv_value =  "http://mediaservices.myspace.com/services/media/embed.aspx/m=$Embed_id,t=1,mt=video,ap=$RV_autoplay";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
         break;
 		
-		case Veoh:
+		case 'Veoh':
 		$rv_value = "http://www.veoh.com/static/swf/webplayer/WebPlayer.swf?version=AFrontend.5.4.2.20.1002&permalinkId=$Embed_id";
 		$rv_value.= "&player=videodetailsembedded&id=anonymous&videoAutoPlay=$RV_autoplay";
 		$rv_flashvar = null;
@@ -128,21 +132,21 @@ extract( $args );
 		$rv_cap = $Embed_cap;
         break;
 		
-	    case Blip:
+	    case 'Blip':
 		$rv_value =  "http://blip.tv/play/$Embed_id";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
         break;
 		
-        case WordPress:
+        case 'WordPress':
 		$rv_value =  "http://s0.videopress.com/player.swf?v=1.02";
 		$rv_flashvar = "<param name='flashvars' value='$Embed_id'>";
 		$rv_flashvar2 = 'flashvars="guid='.$Embed_id.'"';
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case Viddler:
+		case 'Viddler':
 		$rv_value =  "http://www.viddler.com/player/$Embed_id";
 		if($RV_autoplay=='1'){
 		$rv_flashvar = "<param name=\"flashvars\" value=\"autoplay=t\" />\n";
@@ -151,7 +155,7 @@ extract( $args );
 		$rv_cap = $Embed_cap;
         break;
 		
-		case DailyMotion:
+		case 'DailyMotion':
 		$rv_value =  "http://www.dailymotion.com/swf/$Embed_id&autoStart=$RV_autoplay&related=0";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
@@ -159,14 +163,14 @@ extract( $args );
         break;
 				
 		
-		case Revver:
+		case 'Revver':
 		$rv_value = "http://flash.revver.com/player/1.0/player.swf?mediaId=$Embed_id&autoStart=$RV_autoplay";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case Metacafe:
+		case 'Metacafe':
 		$rid = split('/',$Embed_id);
 		$rv_value = "http://www.metacafe.com/fplayer/$rid[0]/$rid[1].swf";
 		if($RV_autoplay=='1'){
@@ -176,28 +180,28 @@ extract( $args );
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case Tudou:
+		case 'Tudou':
 		$rv_value = "$Embed_id";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case Youku:
+		case 'Youku':
 		$rv_value = "$Embed_id";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case cn6:
+		case 'cn6':
 		$rv_value = "$Embed_id";
 		$rv_flashvar = null;
 		$rv_flashvar2 = null;
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case Google:
+		case 'Google':
 		$rv_value = "http://video.google.com/googleplayer.swf?docid=$Embed_id&hl=en&fs=true";
 		if($RV_autoplay=='1'){
 		$rv_flashvar = null;
@@ -206,7 +210,7 @@ extract( $args );
 		$rv_cap = $Embed_cap;
 		break;
 		
-		case Tangle:
+		case 'Tangle':
 		$rv_value = "http://www.tangle.com/flash/swf/flvplayer.swf";
 		if($RV_autoplay=='1'){
 		$rv_flashvar = null;

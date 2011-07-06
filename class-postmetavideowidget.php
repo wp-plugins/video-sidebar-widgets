@@ -246,23 +246,23 @@ VSWShowVideo($vsw_pmvw_video_source,$vsw_pmvw_video_id,$vsw_pmvw_video_autoplay,
 				$msg = "<p class='description'>Sorry, auto play option not supported by ".$source."</p>";
 				switch ($source) {
 						
-						case WordPress:
+						case 'WordPress':
 						echo $msg;
 						break;
 						
-						case Tudou:
+						case 'Tudou':
 						echo $msg;
 						break;
 						
-						case Youku:
+						case 'Youku':
 						echo $msg;
 						break;
 						
-						case Blip:
+						case 'Blip':
 						echo "<p class='description'>Sorry, auto play option for BlipTv was removed as it is causing error in Internet Explorer</p>";
 						break;
 						
-						case cn6:
+						case 'cn6':
 						echo "<p class='description'>Sorry, auto play option not supported by 6.cn</p>";
 						break;
 					}	

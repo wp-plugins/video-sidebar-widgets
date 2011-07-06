@@ -13,6 +13,8 @@ add_options_page('Video Sidebar Widgets Settings', 'Video Sidebar Widgets','mana
 }
 
 function vsw_admin_page(){
+//define and initiate variables to prevent error in WordPress Debug Mode
+$checked1 = $checked2 = $checked3 = $checked4 = '';
 ?>
     <div class="wrap">
 		<div class="icon32" id="icon-options-general"><br></div>
@@ -31,7 +33,7 @@ function vsw_admin_page(){
 		<br/>
 		<label>Video Sidebar Widget</label>
         <?php
-	       if($options['hide_vsw']) { $checked1 = ' checked="checked" '; }
+	       if(isset($options['hide_vsw'])) { $checked1 = ' checked="checked" '; }
 	      echo "<input ".$checked1." id='vsw' name='vsw_plugin_options[hide_vsw]' type='checkbox' value='hide'/>";		
 		?>
 		</div>
@@ -41,7 +43,7 @@ function vsw_admin_page(){
 		<br/>
 		<label>Random Video Widget</label>
         <?php
-	       if($options['hide_rvw']) { $checked2 = ' checked="checked" '; }
+	       if(isset($options['hide_rvw'])) { $checked2 = ' checked="checked" '; }
 	      echo "<input ".$checked2." id='rvw' name='vsw_plugin_options[hide_rvw]' type='checkbox' value='hide'/>";		
 		?>
 		</div>	
@@ -51,7 +53,7 @@ function vsw_admin_page(){
 		<br/>
 		<label>TinyMCE Editor Button</label>
         <?php
-	       if($options['hide_tmb']) { $checked3 = ' checked="checked" '; }
+	       if(isset($options['hide_tmb'])) { $checked3 = ' checked="checked" '; }
 	      echo "<input ".$checked3." id='tmb' name='vsw_plugin_options[hide_tmb]' type='checkbox' value='hide'/>";		
 		?>
 		</div>
@@ -62,7 +64,7 @@ function vsw_admin_page(){
 		<br/>
 		<label>Post Meta Video Widget</label>
         <?php
-	       if($options['hide_pmvw']) { $checked4 = ' checked="checked" '; }
+	       if(isset($options['hide_pmvw'])) { $checked4 = ' checked="checked" '; }
 	      echo "<input ".$checked4." id='tmb' name='vsw_plugin_options[hide_pmvw]' type='checkbox' value='hide'/>";		
 		?>
 		</div>
