@@ -16,49 +16,49 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
         $v_width2 = $videowidth;
         $v_height2 = $videoheight;
         //declare empty variable to prevent WordPress debug error
-        $flashvar = null;
-        $flashvar2 = null;
+        $flashvar = "";
+        $flashvar2 = "";
   
       	$source = $v_source;
         
 		//test for source and assign codes accordingly	
 		switch ($source) {
 		
-		case null:
-		$value = null;
-		$flashvar = null;
-		$flashvar2 = null;
+		case "":
+		$value = "";
+		$flashvar = "";
+		$flashvar2 = "";
 		break;		
 		
         case 'YouTube':
         $value = "http://www.youtube.com/v/$v_id2&autoplay=$v_autoplay2&loop=0&rel=0";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
         break;
 		
 		case 'Vimeo':
 		$value =  "http://vimeo.com/moogaloop.swf?clip_id=$v_id2&amp;server=vimeo.com&amp;loop=0&amp;fullscreen=1&amp;autoplay=$v_autoplay2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
         break;
 		
 		case 'MySpace':
 		$value =  "http://mediaservices.myspace.com/services/media/embed.aspx/m=$v_id2,t=1,mt=video,ap=$v_autoplay2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
         break;
 		
 		case 'Veoh':
 		$value = "http://www.veoh.com/static/swf/webplayer/WebPlayer.swf?version=AFrontend.5.4.2.20.1002&";
 		$value.= "permalinkId=$v_id2&player=videodetailsembedded&id=anonymous&videoAutoPlay=$v_autoplay2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
         break;
 		
 	    case 'Blip':
 		$value =  "http://blip.tv/play/$v_id2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
         break;
 		
 	    case 'WordPress':
@@ -77,48 +77,48 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		
 		case 'DailyMotion':
 		$value =  "http://www.dailymotion.com/swf/$v_id2&autoStart=$v_autoplay2&related=0";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
         break;
 				
 		
 		case 'Revver':
 		$value = "http://flash.revver.com/player/1.0/player.swf?mediaId=$v_id2&autoStart=$v_autoplay2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
 		break;
 		
 		case 'Metacafe':
 		$id = split('/',$v_id2);
 		$value = "http://www.metacafe.com/fplayer/$id[0]/$id[1].swf";
 		if($v_autoplay2=='1'){
-		$flashvar = null;
+		$flashvar = "";
 		$flashvar2 = 'flashVars="playerVars=showStats=no|autoPlay=yes|"';
 		}
 		break;
 		
 		case 'Tudou':
 		$value = "$v_id2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
 		break;
 		
 		case 'Youku':
 		$value = "$v_id2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
 		break;
 		
 		case 'cn6':
 		$value = "$v_id2";
-		$flashvar = null;
-		$flashvar2 = null;
+		$flashvar = "";
+		$flashvar2 = "";
 		break;
 		
 		case 'Google':
 		$value = "http://video.google.com/googleplayer.swf?docid=$v_id2&hl=en&fs=true";
 		if($v_autoplay2=='1'){
-		$flashvar = null;
+		$flashvar = "";
 		$flashvar2 = 'FlashVars="autoPlay=true&playerMode=embedded"';
 		}
 		break;
@@ -126,10 +126,10 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		case 'Tangle':
 		$value = "http://www.tangle.com/flash/swf/flvplayer.swf";
 		if($v_autoplay2=='1'){
-		$flashvar = null;
+		$flashvar = "";
 		$flashvar2 = "FlashVars=\"viewkey=$v_id2&autoplay=$v_autoplay2\"";
 		}else{
-		$flashvar = null;
+		$flashvar = "";
 		$flashvar2 = "FlashVars=\"viewkey=$v_id2\"";
 		}
 		break;
@@ -223,8 +223,8 @@ function vsw_show_video_class($id,$source,$width,$height,$autoplay){
 		//now have to switch it.
 		switch ($source) {
 				
-		case null:
-		$vsw_source = null;
+		case "":
+		$vsw_source = "";
 		break;
 		
 		case 'youtube':
@@ -296,7 +296,7 @@ function vsw_show_video_class($id,$source,$width,$height,$autoplay){
 		//switch autoplay yes or no to 1 or 0
 		switch ($autoplay) {
 		
-		case null:
+		case "":
 		$vsw_autoplay = 0;
 		break;
 		

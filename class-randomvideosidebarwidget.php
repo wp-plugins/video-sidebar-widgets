@@ -37,8 +37,8 @@ extract( $args );
 		$RV_cap5 = $instance['RV_cap5'];
 		
 		//define empty variable to prevent WordPress debug error
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 							
         echo $before_widget;
 
@@ -96,46 +96,46 @@ extract( $args );
 	
 		switch ($select_source) {
 		
-		case null:
-		$rv_value = null;
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
-		$rv_cap = null;
+		case "":
+		$rv_value = "";
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
+		$rv_cap = "";
 		break;		
 		
         case 'YouTube':
 		$rv_value = "http://www.youtube.com/v/$Embed_id&autoplay=$RV_autoplay&loop=0&rel=0";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
 		
 		case 'Vimeo':
 		$rv_value =  "http://vimeo.com/moogaloop.swf?clip_id=$Embed_id&amp;server=vimeo.com&amp;loop=0&amp;fullscreen=1&amp;autoplay=$RV_autoplay";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
 		
 		case 'MySpace':
 		$rv_value =  "http://mediaservices.myspace.com/services/media/embed.aspx/m=$Embed_id,t=1,mt=video,ap=$RV_autoplay";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
 		
 		case 'Veoh':
 		$rv_value = "http://www.veoh.com/static/swf/webplayer/WebPlayer.swf?version=AFrontend.5.4.2.20.1002&permalinkId=$Embed_id";
 		$rv_value.= "&player=videodetailsembedded&id=anonymous&videoAutoPlay=$RV_autoplay";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
 		
 	    case 'Blip':
 		$rv_value =  "http://blip.tv/play/$Embed_id";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
 		
@@ -157,16 +157,16 @@ extract( $args );
 		
 		case 'DailyMotion':
 		$rv_value =  "http://www.dailymotion.com/swf/$Embed_id&autoStart=$RV_autoplay&related=0";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
 				
 		
 		case 'Revver':
 		$rv_value = "http://flash.revver.com/player/1.0/player.swf?mediaId=$Embed_id&autoStart=$RV_autoplay";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
 		break;
 		
@@ -174,7 +174,7 @@ extract( $args );
 		$rid = split('/',$Embed_id);
 		$rv_value = "http://www.metacafe.com/fplayer/$rid[0]/$rid[1].swf";
 		if($RV_autoplay=='1'){
-		$rv_flashvar = null;
+		$rv_flashvar = "";
 		$rv_flashvar2 = 'flashVars="playerVars=showStats=no|autoPlay=yes|"';
 		}
 		$rv_cap = $Embed_cap;
@@ -182,29 +182,29 @@ extract( $args );
 		
 		case 'Tudou':
 		$rv_value = "$Embed_id";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
 		break;
 		
 		case 'Youku':
 		$rv_value = "$Embed_id";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
 		break;
 		
 		case 'cn6':
 		$rv_value = "$Embed_id";
-		$rv_flashvar = null;
-		$rv_flashvar2 = null;
+		$rv_flashvar = "";
+		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
 		break;
 		
 		case 'Google':
 		$rv_value = "http://video.google.com/googleplayer.swf?docid=$Embed_id&hl=en&fs=true";
 		if($RV_autoplay=='1'){
-		$rv_flashvar = null;
+		$rv_flashvar = "";
 		$rv_flashvar2 = 'FlashVars="autoPlay=true&playerMode=embedded"';
 		}
 		$rv_cap = $Embed_cap;
@@ -213,10 +213,10 @@ extract( $args );
 		case 'Tangle':
 		$rv_value = "http://www.tangle.com/flash/swf/flvplayer.swf";
 		if($RV_autoplay=='1'){
-		$rv_flashvar = null;
+		$rv_flashvar = "";
 		$rv_flashvar2 = "FlashVars=\"viewkey=$Embed_id&autoplay=$RV_autoplay\"";
 		}else{
-		$rv_flashvar = null;
+		$rv_flashvar = "";
 		$rv_flashvar2 = "FlashVars=\"viewkey=$Embed_id\"";
 		}
 		$rv_cap = $Embed_cap;
@@ -336,8 +336,8 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$autoplaysetting = '0';
 				$videoid = $instance['RV_id1'];
 				$videosource = $instance['RV_source1']; 
-				$videowidth = null;
-				$videoheight = null;
+				$videowidth = "";
+				$videoheight = "";
 				//$admin = true // to show video in admin
 				
 				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
@@ -381,8 +381,8 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$autoplaysetting = '0';
 				$videoid = $instance['RV_id2'];
 				$videosource = $instance['RV_source2']; 
-				$videowidth = null;
-				$videoheight = null;
+				$videowidth = "";
+				$videoheight = "";
 				//$admin = true // to show video in admin
 				
 				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
@@ -428,8 +428,8 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$autoplaysetting = '0';
 				$videoid = $instance['RV_id3'];
 				$videosource = $instance['RV_source3']; 
-				$videowidth = null;
-				$videoheight = null;
+				$videowidth = "";
+				$videoheight = "";
 				//$admin = true // to show video in admin
 				
 				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
@@ -474,8 +474,8 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$autoplaysetting = '0';
 				$videoid = $instance['RV_id4'];
 				$videosource = $instance['RV_source4']; 
-				$videowidth = null;
-				$videoheight = null;
+				$videowidth = "";
+				$videoheight = "";
 				//$admin = true // to show video in admin
 				
 				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');
@@ -519,8 +519,8 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 				$autoplaysetting = '0';
 				$videoid = $instance['RV_id5'];
 				$videosource = $instance['RV_source5']; 
-				$videowidth = null;
-				$videoheight = null;
+				$videowidth = "";
+				$videoheight = "";
 				//$admin = true // to show video in admin
 				
 				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');

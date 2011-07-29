@@ -86,8 +86,8 @@ class VideoSidebarWidget extends WP_Widget {
 				$autoplaysetting = '0';
 				$videoid = $instance['v_id2'];
 				$videosource = $instance['v_source']; 
-				$videowidth = null;
-				$videoheight = null;
+				$videowidth = "";
+				$videoheight = "";
 				//$admin = true // to show video in admin
 				
 				VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoheight,'true','false');

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Video Sidebar Widgets
 Plugin URI: http://denzeldesigns.com/wordpress-plugins/video-sidebar-widgets/
-Version: 5.1
+Version: 5.2
 Description: Video Sidebar Widgets to display videos such as Vimeo, YouTube, MySpace Videos etc. Now with added shortcode and quicktag to embed video in post and page content.
 Author: Denzel Chia
 Author URI: http://denzeldesigns.com/
