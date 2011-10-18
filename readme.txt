@@ -90,14 +90,9 @@ Refer to http://wordpress.org/support/topic/plugin-video-sidebar-widgets-ie9-wid
 As of version 3.0, shortcode is added to enable user to post video in content.
 User can use the video Quicktag at Tinymce editor to insert video shortcode.
 
-== How to use Video Sidebar Widget ? ==
+== How to use this plugin ? ==
 
-Please visit plugin site for details. http://denzeldesigns.com
-
-
-== How to use Random Video Sidebar Widget ? ==
-
-Please visit plugin site for details. http://denzeldesigns.com
+Please visit plugin site for details. http://denzelchia.com
 
 
 == Frequently Asked Questions ==
