@@ -21,6 +21,8 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
   
       	$source = $v_source;
         
+if(!empty($source)): //do this only if video source not empty, to fix widget page loading in IE 9        
+        
 		//test for source and assign codes accordingly	
 		switch ($source) {
 		
@@ -184,7 +186,7 @@ function VSWShowVideo($videosource,$videoid,$autoplaysetting,$videowidth,$videoh
 		echo "</embed>\n";
 		echo "</object>\n\n";
 		}
-
+endif;
 
 }//end of function VSWShowVideo
 
