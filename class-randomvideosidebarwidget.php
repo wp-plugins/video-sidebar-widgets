@@ -104,7 +104,9 @@ extract( $args );
 		break;		
 		
         case 'YouTube':
-		$rv_value = "http://www.youtube.com/v/$Embed_id&autoplay=$RV_autoplay&loop=0&rel=0";
+        //Youtube changed API.
+        //Now needs to add a ? in embed url before the variables.
+		$rv_value = "http://www.youtube.com/v/$Embed_id?autoplay=$RV_autoplay&loop=0&rel=0";
 		$rv_flashvar = "";
 		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;

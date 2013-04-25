@@ -33,9 +33,10 @@ if(!empty($source)): //do this only if video source not empty, to fix widget pag
 		break;		
 		
         case 'YouTube':
-        //modified in version 5.4 to fix autoplay, does not know why youtube changed it's setting.
-        if($autoplaysetting=='1'){$auto = "&autoplay=$v_autoplay2";}else{$auto="";}
-        $value = "http://www.youtube.com/v/$v_id2$auto&loop=0&rel=0";
+        //Youtube changed API.
+        //previous modification in version 5.4 does not work for some user, hope this works for everyone.
+        //thanks to LoSan for the hint about the need to add ? in embed url. http://wordpress.org/support/topic/cant-turn-off-autoplay
+        $value = "http://www.youtube.com/v/$v_id2?autoplay=$v_autoplay2&loop=0&rel=0";
 		$flashvar = "";
 		$flashvar2 = "";
         break;

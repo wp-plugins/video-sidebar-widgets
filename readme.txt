@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
 Tested up to: 3.5.1
-Stable tag:5.4
+Stable tag:5.5
 
 == Description ==
 
@@ -13,6 +13,12 @@ Stable tag:5.4
  Video networks includes Youtube, Vimeo, BlipTV, Google, etc. This plugin consist of 2 widgets and 1 TinyMCE editor button.
 
 == Changelog ==
+
+
+= 5.5 =
+
+Previous YouTube autoplay fix does not work for some users. Redo it according to loSan and qcdars's solution http://wordpress.org/support/topic/cant-turn-off-autoplay
+Fix YouTube autoplay in Random Video Widget. (missed this in previous version 5.4)
 
 
 = 5.4 =
