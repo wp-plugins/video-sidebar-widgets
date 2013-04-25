@@ -33,7 +33,9 @@ if(!empty($source)): //do this only if video source not empty, to fix widget pag
 		break;		
 		
         case 'YouTube':
-        $value = "http://www.youtube.com/v/$v_id2&autoplay=$v_autoplay2&loop=0&rel=0";
+        //modified in version 5.4 to fix autoplay, does not know why youtube changed it's setting.
+        if($autoplaysetting=='1'){$auto = "&autoplay=$v_autoplay2";}else{$auto="";}
+        $value = "http://www.youtube.com/v/$v_id2$auto&loop=0&rel=0";
 		$flashvar = "";
 		$flashvar2 = "";
         break;
