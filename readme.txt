@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
 Tested up to: 3.5.1
-Stable tag:5.5
+Stable tag:5.6
 
 == Description ==
 
@@ -13,6 +13,11 @@ Stable tag:5.5
  Video networks includes Youtube, Vimeo, BlipTV, Google, etc. This plugin consist of 2 widgets and 1 TinyMCE editor button.
 
 == Changelog ==
+
+
+= 5.6 =
+
+Corrected typo error for constant WP_PLUGIN_URL in vsw_tinymce.php
 
 
 = 5.5 =

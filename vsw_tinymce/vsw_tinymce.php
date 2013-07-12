@@ -29,10 +29,10 @@ function dd_vsw_button($tiny_buttons) {
 // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
 function dd_vsw_tinymce_plugin($plugin_array) {
   
-    //check if defined WP_PLUGINS_URL  	
-   	if (defined('WP_PLUGINS_URL'))  {		
+    //check if defined WP_PLUGIN_URL  	
+   	if (defined('WP_PLUGIN_URL'))  {		
 		
-    $url_to_plugin =  WP_PLUGINS_URL."/video-sidebar-widgets/vsw_tinymce/editor_plugin.js";
+    $url_to_plugin =  WP_PLUGIN_URL."/video-sidebar-widgets/vsw_tinymce/editor_plugin.js";
 	
 	}else{
     //if not assume it is default location.
