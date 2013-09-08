@@ -242,7 +242,7 @@ extract( $args );
 		echo "width=\"$RV_width\" height=\"$RV_height\">\n";
 		echo "</embed>\n";
 		echo "</object>\n\n";
-		echo "<p class=\"VideoCaption\">$rv_cap</p>";
+		if(!empty($rv_cap)){echo "<p class=\"VideoCaption\">$rv_cap</p>\n\n";};
 		
 		
         echo $after_widget;
