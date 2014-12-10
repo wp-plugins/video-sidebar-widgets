@@ -5,7 +5,7 @@ Author link: http://denzeldesigns.com
 Tags:video, widget, widgets, sidebar, videos, video sidebar widget, video widget, embed video, video embed, video in sidebar, youtube, vimeo, veoh, myspace video, revver, blip tv, tudou, youku, 6.cn, google videos, tangle
 Requires at least:2.8.1
 Tested up to: 4.0
-Stable tag:5.7
+Stable tag:5.8
 
 == Description ==
 
@@ -13,6 +13,15 @@ Stable tag:5.7
  Video networks includes Youtube, Vimeo, BlipTV, Google, etc. This plugin consist of 2 widgets and 1 TinyMCE editor button.
 
 == Changelog ==
+
+
+= 5.8 =
+
+Let YouTube and Vimeo video print iframe embed code, the others remains unchanged.
+Now Youtube and Vimeo video plays in iOS.
+Use two forward slashes for Youtube and Vimeo video src as shown in their original embed code, therefore should work in both http and https environment. 
+Some adjustments to admin layout. Thanks to qcdars for the pointers.
+
 
 = 5.7 =
 

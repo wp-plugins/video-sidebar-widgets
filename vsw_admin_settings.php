@@ -76,7 +76,6 @@ $checked1 = $checked2 = $checked3 = $checked4 = '';
 		<p>
 			<input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" />
 		</p>	
-		<p class="description">If you ever need any modifications to the plugin, Please post it on <a href="http://wpquestions.com/affiliates/register/name/denzelchia" target="_blank">WP Questions.</a> Thanks!</p>	
 			</div>
 		</form>
 	</div>

@@ -8,7 +8,7 @@ class RandomVideoSidebarWidget extends WP_Widget {
 
 function RandomVideoSidebarWidget() {
 $widget_ops = array( 'classname' => 'randomvideosidebar', 'description' => __('A Random Video Widget. Randomly selects 1 of the 5 preset videos for display', 'randomvideosidebar') );
-$control_ops = array( 'width' => 705, 'height' => 600, 'id_base' => 'randomvideosidebar' );
+$control_ops = array( 'width' => 850, 'height' => 700, 'id_base' => 'randomvideosidebar' );
 $this->WP_Widget( 'randomvideosidebar', __('Random Video Sidebar Widget', 'randomvideosidebar'), $widget_ops, $control_ops );
 }
 
@@ -102,7 +102,8 @@ extract( $args );
 		$rv_flashvar2 = "";
 		$rv_cap = "";
 		break;		
-		
+
+	/**	@since 5.8 we are not using this anymore..
         case 'YouTube':
         //Youtube changed API.
         //Now needs to add a ? in embed url before the variables.
@@ -118,7 +119,7 @@ extract( $args );
 		$rv_flashvar2 = "";
 		$rv_cap = $Embed_cap;
         break;
-		
+   **/		
 		case 'MySpace':
 		$rv_value =  "http://mediaservices.myspace.com/services/media/embed.aspx/m=$Embed_id,t=1,mt=video,ap=$RV_autoplay";
 		$rv_flashvar = "";
@@ -227,22 +228,41 @@ extract( $args );
 		
 	
 		}
+
+
+        	if($select_source == 'YouTube'):
+        	/*This is the latest embed iframe code format, we use it now.
+        	/*<iframe width="560" height="315" src="//www.youtube.com/embed/OMOVFvcNfvE" frameborder="0" allowfullscreen></iframe>
+        	*/
+        	echo "<iframe width='$RV_width' height='$RV_height' src='//www.youtube.com/embed/$Embed_id?autoplay=$RV_autoplay&loop=0&rel=0' frameborder='0' allowfullscreen></iframe>";
+        	if(!empty($Embed_cap)){echo "<p class=\"VideoCaption\">$Embed_cap</p>\n\n";};
+			
+			
+        	elseif($select_source == 'Vimeo'):
+        	/*This is the latest embed iframe code format, we use it now.
+        	*<iframe src="//player.vimeo.com/video/113758779" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			*/
+			echo "<br/><iframe src='//player.vimeo.com/video/$Embed_id?autoplay=$RV_autoplay' width='$RV_width' height='$RV_height' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+        	if(!empty($Embed_cap)){echo "<p class=\"VideoCaption\">$Embed_cap</p>\n\n";};			
+			
+			else:
 		
 		
-		
-        echo "\n<object width=\"$RV_width\" height=\"$RV_height\">\n";
-		echo $rv_flashvar;
-		echo "<param name=\"allowfullscreen\" value=\"true\" />\n";
-		echo "<param name=\"allowscriptaccess\" value=\"always\" />\n";
-		echo "<param name=\"movie\" value=\"$rv_value\" />\n";
-		echo "<param name=\"wmode\" value=\"transparent\">\n";
-		echo "<embed src=\"$rv_value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
-		echo "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
-		echo $rv_flashvar2;
-		echo "width=\"$RV_width\" height=\"$RV_height\">\n";
-		echo "</embed>\n";
-		echo "</object>\n\n";
-		if(!empty($rv_cap)){echo "<p class=\"VideoCaption\">$rv_cap</p>\n\n";};
+		        echo "\n<object width=\"$RV_width\" height=\"$RV_height\">\n";
+				echo $rv_flashvar;
+				echo "<param name=\"allowfullscreen\" value=\"true\" />\n";
+				echo "<param name=\"allowscriptaccess\" value=\"always\" />\n";
+				echo "<param name=\"movie\" value=\"$rv_value\" />\n";
+				echo "<param name=\"wmode\" value=\"transparent\">\n";
+				echo "<embed src=\"$rv_value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
+				echo "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
+				echo $rv_flashvar2;
+				echo "width=\"$RV_width\" height=\"$RV_height\">\n";
+				echo "</embed>\n";
+				echo "</object>\n\n";
+				if(!empty($rv_cap)){echo "<p class=\"VideoCaption\">$rv_cap</p>\n\n";};
+			
+			endif;
 		
 		
         echo $after_widget;
@@ -299,8 +319,10 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 
 
 ?>
-<div style="width:220px;height:350px;float:left;margin:0px 15px 20px 5px">
+<div style="width:400px;height:400px;float:left;margin:0px 15px 20px 5px">
 <h2>General Settings</h2>
+<br/>
+<p class='description' style='padding-left:0px !important'>Please fill up settings before clicking on save to display video.</p>
 <!--Title -->        
 <p>
 <label for="<?php echo $this->get_field_id('RV_title'); ?>">Widget Title:</label> 
@@ -321,16 +343,16 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 
 <!--auto play -->
 <p>
-<label for="<?php echo $this->get_field_id( 'RV_autoplay' ); ?>">Auto Play:</label> 
+<label for="<?php echo $this->get_field_id( 'RV_autoplay' ); ?>">Auto Play: </label> 
 <select id="<?php echo $this->get_field_id( 'RV_autoplay' );?>" name="<?php echo $this->get_field_name( 'RV_autoplay' );?>" class="widefat" style="width:100%;">';
 <option value='1' <?php  if($instance['RV_autoplay'] == '1'){echo 'selected="selected"';}?>>Yes</option>
 <option value='0' <?php  if($instance['RV_autoplay'] == '0'){echo 'selected="selected"';}?>>No</option>
 </select>
 </p>
-<p>Please fill up settings before clicking on save to display video.</p>
+<p class='description' style='padding-left:0px !important'>Autoplay is for front end only, does not autoplay in admin. Applies to all widgets.</p>
 </div>
 
-<div style="width:220px;height:350px;float:left;margin:0px 15px 20px 0px">
+<div style="width:400px;height:500px;float:left;margin:0px 15px 20px 0px">
 <!--first video setting -->
 <h2>Video 1</h2>
 <?php
@@ -374,7 +396,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <input class="widefat" id="<?php echo $this->get_field_id('RV_cap1'); ?>" name="<?php echo $this->get_field_name('RV_cap1'); ?>" type="text" value="<?php echo $instance['RV_cap1']; ?>" /></p>
 
 </div>
-<div style="width:220px;height:350px;float:left;margin:0px 15px 20px 0px">
+<div style="width:400px;height:500px;float:left;margin:0px 15px 20px 0px">
 
 <!--second video setting -->
 <h2>Video 2</h2>
@@ -421,7 +443,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <input class="widefat" id="<?php echo $this->get_field_id('RV_cap2'); ?>" name="<?php echo $this->get_field_name('RV_cap2'); ?>" type="text" value="<?php echo $instance['RV_cap2']; ?>" /></p>
 
 </div>
-<div style="width:220px;height:350px;float:left;margin:0px 15px 20px 0px">
+<div style="width:400px;height:500px;float:left;margin:0px 15px 20px 0px">
 
 <!--third video setting -->
 <h2>Video 3</h2>
@@ -467,7 +489,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 
 
 </div>
-<div style="width:220px;height:350px;float:left;margin:0px 15px 20px 5px">
+<div style="width:400px;height:500px;float:left;margin:0px 15px 20px 5px">
 
 <!--fourth video setting -->
 <h2>Video 4</h2>
@@ -512,7 +534,7 @@ $instance = wp_parse_args( (array) $instance, array( 'RV_title' => '', 'RV_width
 <input class="widefat" id="<?php echo $this->get_field_id('RV_cap4'); ?>" name="<?php echo $this->get_field_name('RV_cap4'); ?>" type="text" value="<?php echo $instance['RV_cap4']; ?>" /></p>
 
 </div>
-<div style="width:220px;height:350px;float:left;margin:0px 15px 20px 0px">
+<div style="width:400px;height:500px;float:left;margin:0px 15px 20px 0px">
 
 <!--fifth video setting -->
 <h2>Video 5</h2>

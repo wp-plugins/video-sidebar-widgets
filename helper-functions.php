@@ -31,7 +31,8 @@ if(!empty($source)): //do this only if video source not empty, to fix widget pag
 		$flashvar = "";
 		$flashvar2 = "";
 		break;		
-		
+	
+	/**	@since 5.8 we are not using this anymore.. it been quite a while that I made an update!
         case 'YouTube':
         //Youtube changed API.
         //previous modification in version 5.4 does not work for some user, hope this works for everyone.
@@ -46,6 +47,7 @@ if(!empty($source)): //do this only if video source not empty, to fix widget pag
 		$flashvar = "";
 		$flashvar2 = "";
         break;
+   **/     
 		
 		case 'MySpace':
 		$value =  "http://mediaservices.myspace.com/services/media/embed.aspx/m=$v_id2,t=1,mt=video,ap=$v_autoplay2";
@@ -142,52 +144,122 @@ if(!empty($source)): //do this only if video source not empty, to fix widget pag
 		}
 		
 		if($shortcode=="true"){
-		//added in version 2.3
-		//return instead of echo video on blog using shortcode
-		$vsw_code = "\n<object width=\"$v_width2\" height=\"$v_height2\">\n";
-		$vsw_code .= $flashvar;
-		$vsw_code .= "<param name=\"allowfullscreen\" value=\"true\" />\n";
-		$vsw_code .= "<param name=\"allowscriptaccess\" value=\"always\" />\n";
-		$vsw_code .= "<param name=\"movie\" value=\"$value\" />\n";
-		$vsw_code .= "<param name=\"wmode\" value=\"transparent\">\n";
-		$vsw_code .= "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
-		$vsw_code .= "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
-		$vsw_code .= $flashvar2;
-		$vsw_code .= "width=\"$v_width2\" height=\"$v_height2\">\n";
-		$vsw_code .= "</embed>\n";
-		$vsw_code .= "</object>\n\n";
-		return $vsw_code;
+		
+        	if($source == 'YouTube'):
+        		/*This is the latest embed iframe code format, we use it now.
+        		/*<iframe width="560" height="315" src="//www.youtube.com/embed/OMOVFvcNfvE" frameborder="0" allowfullscreen></iframe>
+        		*/
+        		return "<iframe width='$v_width2' height='$v_height2' src='//www.youtube.com/embed/$v_id2?autoplay=$v_autoplay2&loop=0&rel=0' frameborder='0' allowfullscreen></iframe>";
+ 
+        	
+        	elseif($source == 'Vimeo'):
+        		/*This is the latest embed iframe code format, we use it now.
+        		*<iframe src="//player.vimeo.com/video/113758779" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				*/
+				return "<iframe src='//player.vimeo.com/video/$v_id2?autoplay=$v_autoplay2' width='$v_width2' height='$v_height2' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+       	
+        	
+        	else:		
+		
+				//added in version 2.3
+				//return instead of echo video on blog using shortcode
+				$vsw_code = "\n<object width=\"$v_width2\" height=\"$v_height2\">\n";
+				$vsw_code .= $flashvar;
+				$vsw_code .= "<param name=\"allowfullscreen\" value=\"true\" />\n";
+				$vsw_code .= "<param name=\"allowscriptaccess\" value=\"always\" />\n";
+				$vsw_code .= "<param name=\"movie\" value=\"$value\" />\n";
+				$vsw_code .= "<param name=\"wmode\" value=\"transparent\">\n";
+				$vsw_code .= "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
+				$vsw_code .= "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
+				$vsw_code .= $flashvar2;
+				$vsw_code .= "width=\"$v_width2\" height=\"$v_height2\">\n";
+				$vsw_code .= "</embed>\n";
+				$vsw_code .= "</object>\n\n";
+				return $vsw_code;
+			
+			endif;
+		
 		}
 		elseif($admin=="true"){
-		// echo video in admin
-        echo "\n<object width=\"212\" height=\"172\">\n";
-		echo $flashvar;
-		echo "<param name=\"allowfullscreen\" value=\"true\" />\n";
-		echo "<param name=\"allowscriptaccess\" value=\"always\" />\n";
-		echo "<param name=\"movie\" value=\"$value\" />\n";
-		echo "<param name=\"wmode\" value=\"transparent\">\n";
-		echo "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
-		echo "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
-		echo $flashvar2;
-		echo "width=\"212\" height=\"172\">\n";
-		echo "</embed>\n";
-		echo "</object>\n\n";
+		    
+		    //determine admin video width.
+		    global $current_screen;
+		    if($current_screen->id == 'post' || $current_screen->id == 'page'){
+		    	$admin_video_width = '250';
+		    	$admin_video_height = '141';
+		    }else{
+		    	$admin_video_width = '400';
+		    	$admin_video_height = '225';		    
+		    }
+
+			
+        	if($source == 'YouTube'):
+        		/*This is the latest embed iframe code format, we use it now.
+        		/*<iframe width="560" height="315" src="//www.youtube.com/embed/OMOVFvcNfvE" frameborder="0" allowfullscreen></iframe>
+        		*/
+        		echo "<br/><iframe width='$admin_video_width' height='$admin_video_height' src='//www.youtube.com/embed/$v_id2?autoplay=0&loop=0&rel=0' frameborder='0' allowfullscreen></iframe>";
+ 
+        	
+        	elseif($source == 'Vimeo'):
+        		/*This is the latest embed iframe code format, we use it now.
+        		*<iframe src="//player.vimeo.com/video/113758779" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				*/
+				echo "<br/><iframe src='//player.vimeo.com/video/$v_id2?autoplay=0' width='$admin_video_width' height='$admin_video_height' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+			
+			
+			else:
+			
+				// echo video in admin
+		        echo "<br/><object width=\"$admin_video_width\" height=\"$admin_video_height\">\n";
+		    	echo $flashvar;
+		    	echo "<param name=\"allowfullscreen\" value=\"true\" />\n";
+		    	echo "<param name=\"allowscriptaccess\" value=\"always\" />\n";
+		    	echo "<param name=\"movie\" value=\"$value\" />\n";
+		    	echo "<param name=\"wmode\" value=\"transparent\">\n";
+		    	echo "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
+		    	echo "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
+		    	echo $flashvar2;
+		    	echo "width=\"$admin_video_width\" height=\"$admin_video_height\">\n";
+		    	echo "</embed>\n";
+		    	echo "</object>\n\n";
+		    	
+		    endif;
 
         }else{
+        
+        
+        	if($source == 'YouTube'):
+        		/*This is the latest embed iframe code format, we use it now.
+        		/*<iframe width="560" height="315" src="//www.youtube.com/embed/OMOVFvcNfvE" frameborder="0" allowfullscreen></iframe>
+        		*/
+        		echo "<iframe width='$v_width2' height='$v_height2' src='//www.youtube.com/embed/$v_id2?autoplay=$v_autoplay2&loop=0&rel=0' frameborder='0' allowfullscreen></iframe>";
+ 
+        	
+        	elseif($source == 'Vimeo'):
+        		/*This is the latest embed iframe code format, we use it now.
+        		*<iframe src="//player.vimeo.com/video/113758779" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				*/
+				echo "<iframe src='//player.vimeo.com/video/$v_id2?autoplay=$v_autoplay2' width='$v_width2' height='$v_height2' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
+       	
+        	
+        	else:
 		
-		// echo video on blog
-		echo "\n<object width=\"$v_width2\" height=\"$v_height2\">\n";
-		echo $flashvar;
-		echo "<param name=\"allowfullscreen\" value=\"true\" />\n";
-		echo "<param name=\"allowscriptaccess\" value=\"always\" />\n";
-		echo "<param name=\"movie\" value=\"$value\" />\n";
-		echo "<param name=\"wmode\" value=\"transparent\">\n";
-		echo "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
-		echo "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
-		echo $flashvar2;
-		echo "width=\"$v_width2\" height=\"$v_height2\">\n";
-		echo "</embed>\n";
-		echo "</object>\n\n";
+				// echo video on blog
+				echo "\n<object width=\"$v_width2\" height=\"$v_height2\">\n";
+				echo $flashvar;
+				echo "<param name=\"allowfullscreen\" value=\"true\" />\n";
+				echo "<param name=\"allowscriptaccess\" value=\"always\" />\n";
+				echo "<param name=\"movie\" value=\"$value\" />\n";
+				echo "<param name=\"wmode\" value=\"transparent\">\n";
+				echo "<embed src=\"$value\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" ";
+				echo "allowfullscreen=\"true\" allowscriptaccess=\"always\" ";
+				echo $flashvar2;
+				echo "width=\"$v_width2\" height=\"$v_height2\">\n";
+				echo "</embed>\n";
+				echo "</object>\n\n";
+				
+			endif;
+
 		}
 endif;
 
