@@ -7,13 +7,13 @@
 class VideoSidebarWidget extends WP_Widget {
 
 		//function to set up widget in admin
-		function VideoSidebarWidget() {
+		function __construct(){
 		
 				$widget_ops = array( 'classname' => 'videosidebar', 
 				'description' => __('A Video Widget to display video in sidebar from various video sharing networks', 'videosidebar') );
 				
 				$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'videosidebar' );
-				$this->WP_Widget( 'videosidebar', __('Video Sidebar Widget', 'videosidebar'), $widget_ops, $control_ops );
+				parent::__construct( 'videosidebar', __('Video Sidebar Widget', 'videosidebar'), $widget_ops, $control_ops );
 		
 		}
 

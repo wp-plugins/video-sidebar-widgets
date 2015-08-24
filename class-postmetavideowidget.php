@@ -7,13 +7,13 @@
 class PostMetaVideoWidget extends WP_Widget {
 
 		//function to set up widget in admin
-		function PostMetaVideoWidget() {
+		function __construct() {
 		
 				$widget_ops = array( 'classname' => 'postmetavideo', 
 				'description' => __('A Video Widget that is controlled by Post or Page custom field settings.', 'postmetavideo') );
 				
 				$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'postmetavideo' );
-				$this->WP_Widget( 'postmetavideo', __('Post Meta Video Widget', 'postmetavideo'), $widget_ops, $control_ops );
+				parent::__construct( 'postmetavideo', __('Post Meta Video Widget', 'postmetavideo'), $widget_ops, $control_ops );
 		
 		}
 

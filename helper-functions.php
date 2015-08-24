@@ -184,7 +184,7 @@ if(!empty($source)): //do this only if video source not empty, to fix widget pag
 		    
 		    //determine admin video width.
 		    global $current_screen;
-		    if($current_screen->id == 'post' || $current_screen->id == 'page'){
+		    if(@$current_screen->id == 'post' || @$current_screen->id == 'page'){
 		    	$admin_video_width = '250';
 		    	$admin_video_height = '141';
 		    }else{

@@ -6,10 +6,10 @@
 
 class RandomVideoSidebarWidget extends WP_Widget {
 
-function RandomVideoSidebarWidget() {
+function __construct(){
 $widget_ops = array( 'classname' => 'randomvideosidebar', 'description' => __('A Random Video Widget. Randomly selects 1 of the 5 preset videos for display', 'randomvideosidebar') );
 $control_ops = array( 'width' => 850, 'height' => 700, 'id_base' => 'randomvideosidebar' );
-$this->WP_Widget( 'randomvideosidebar', __('Random Video Sidebar Widget', 'randomvideosidebar'), $widget_ops, $control_ops );
+parent::__construct( 'randomvideosidebar', __('Random Video Sidebar Widget', 'randomvideosidebar'), $widget_ops, $control_ops );
 }
 
 
